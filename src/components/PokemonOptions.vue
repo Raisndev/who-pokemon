@@ -1,12 +1,10 @@
 <template>
-	<div class="options container">
+	<div class="options__container">
 		<ul>
-			<li
-				v-for="pokemon in pokemons"
-				:key="pokemon.id"
-				@click="$emit('selection', pokemon.id)"
-			>
-				{{ pokemon.name }}
+			<li v-for="pokemon in pokemons" :key="pokemon.id">
+				<a @click="$emit('selection', pokemon.id)">
+					{{ pokemon.name }}
+				</a>
 			</li>
 		</ul>
 	</div>
@@ -30,10 +28,27 @@
 		padding: 0%;
 	}
 	li {
-		padding: 10px;
 		border: 1px solid black;
 		border-radius: 5px;
-		margin: 10px;
+		margin: 20px 0;
 		text-transform: capitalize;
+	}
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+	}
+	a:active,
+	a:hover {
+		background-color: #eee;
+	}
+	.options__container {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		padding: 30px;
+		background-color: #eee;
+		border-radius: 20px 20px 0 0;
 	}
 </style>

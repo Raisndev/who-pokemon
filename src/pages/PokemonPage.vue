@@ -1,15 +1,23 @@
 <template>
 	<h1 v-if="!pokemon">Analizando Pokemones</h1>
 
-	<div v-else>
-		<h1>Que pokemon es?</h1>
-		<PokemonImage :pokemonId="pokemon.id" :showPokemon="showPokemon" />
-		<PokemonOptions :pokemons="pokemonArr" @selection="checkAnswer($event)" />
-		<template v-if="showAnswer">
-			<h2>{{ message }}</h2>
-			<button @click="newGame">New Game</button>
-		</template>
-	</div>
+	<template v-else>
+		<div class="header__container">
+			<h1>Que pokemon es?</h1>
+			<PokemonImage :pokemonId="pokemon.id" :showPokemon="showPokemon" />
+		</div>
+		<div>
+			<PokemonOptions
+				v-if="!showAnswer"
+				:pokemons="pokemonArr"
+				@selection="checkAnswer($event)"
+			/>
+			<div class="answer" v-else>
+				<h2>{{ message }}</h2>
+				<button @click="newGame">New Game</button>
+			</div>
+		</div>
+	</template>
 </template>
 
 <script>
@@ -59,4 +67,26 @@
 	};
 </script>
 
-<style></style>
+<style>
+	.answer {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80%;
+		border-radius: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 20px;
+		background-color: rgb(156, 214, 156);
+	}
+	.answer h2 {
+		margin: 0 0 10px 0;
+	}
+	.answer button {
+		border: 0;
+		padding: 10px;
+		border-radius: 5px;
+	}
+</style>
