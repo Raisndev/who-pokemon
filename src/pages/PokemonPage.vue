@@ -136,7 +136,7 @@
 		margin-top: 25px;
 	}
 	.header__container img {
-		width: 40%;
+		width: 35%;
 	}
 	.functionality {
 		width: 100%;

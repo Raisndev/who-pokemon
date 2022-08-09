@@ -54,7 +54,7 @@
 		width: 100%;
 	}
 	.options__container img {
-		width: 40%;
+		width: 35%;
 		margin-bottom: 10px;
 	}
 	.options__container h2 {

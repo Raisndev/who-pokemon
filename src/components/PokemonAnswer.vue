@@ -32,7 +32,7 @@
 
 <style scoped>
 	img {
-		width: 70vw;
+		height: 100%;
 	}
 	.answer h2 {
 		margin: 0 0 10px 0;
