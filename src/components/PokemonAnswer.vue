@@ -57,4 +57,9 @@
 		font-weight: 800;
 		text-transform: uppercase;
 	}
+	button:hover,
+	button:active {
+		background-color: #ffcb05;
+		color: #2a75bb;
+	}
 </style>

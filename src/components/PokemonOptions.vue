@@ -47,7 +47,8 @@
 	}
 	a:active,
 	a:hover {
-		background-color: #eee;
+		background-color: #ffcb05;
+		color: #2a75bb;
 	}
 	.options__container {
 		width: 100%;
