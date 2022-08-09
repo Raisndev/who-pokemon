@@ -79,7 +79,9 @@
 				this.showPokemon = false;
 				this.pokemon = null;
 				this.pokemonArr = [];
-				this.mixPokemonArray();
+				setTimeout(() => {
+					this.mixPokemonArray();
+				}, 500);
 			},
 			checkDesktop() {
 				let details = navigator.userAgent;
