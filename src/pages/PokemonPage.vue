@@ -139,7 +139,7 @@
 	}
 	.functionality {
 		width: 100%;
-		height: 50vh;
+		height: calc((var(--vh) * 100) / 2);
 		padding: 20px 30px;
 		background-color: rgb(23 40 62);
 		border-radius: 10px 10px 0 0;
