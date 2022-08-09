@@ -132,7 +132,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 20px;
-		margin: 25px;
+		margin-top: 25px;
 	}
 	.header__container img {
 		width: 50vw;
