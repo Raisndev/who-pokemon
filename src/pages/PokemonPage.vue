@@ -67,11 +67,11 @@
 				if (pokemonId === this.pokemon.id) {
 					this.message = `Correcto, és`;
 					this.btnText = "Siguiente";
-					this.answerImg = "/src/assets/gifs/good.gif";
+					this.answerImg = "/gifs/good.gif";
 				} else {
 					this.message = `Oops, era`;
 					this.btnText = "New Game";
-					this.answerImg = "/src/assets/gifs/bad.gif";
+					this.answerImg = "/gifs/bad.gif";
 				}
 			},
 			newGame() {
