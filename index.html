@@ -12,7 +12,14 @@
 			* {
 				box-sizing: border-box;
 			}
+			html {
+				height: fill-available;
+				height: -webkit-fill-available;
+			}
 			body {
+				min-height: 100vh;
+				min-height: fill-available;
+				min-height: -webkit-fill-available;
 				margin: 0;
 				background-color: rgb(30 49 75);
 			}
@@ -20,7 +27,9 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				height: calc(100vh - calc(100vh - 100%));
+				height: fill-available;
+				height: -webkit-fill-available;
+				/* height: calc(100vh - calc(100vh - 100%)); */
 				margin-top: 0 !important;
 			}
 		</style>
