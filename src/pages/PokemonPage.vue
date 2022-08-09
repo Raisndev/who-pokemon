@@ -91,11 +91,24 @@
 					this.isDesktop = true;
 				}
 			},
+			calculateVh() {
+				var vh = window.innerHeight;
+				console.log(vh);
+				document.documentElement.style.setProperty("--vh", vh + "px");
+			},
 		},
 		created() {
 			this.checkDesktop();
 		},
 		mounted() {
+			// Initial calculation
+			this.calculateVh();
+
+			// Re-calculate on resize
+			window.addEventListener("resize", this.calculateVh);
+
+			// Re-calculate on device orientation change
+			window.addEventListener("orientationchange", this.calculateVh);
 			this.mixPokemonArray();
 		},
 	};
