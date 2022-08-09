@@ -9,7 +9,7 @@
 		<template v-else>
 			<div class="header__container">
 				<!-- <h2>Hello Da</h2> -->
-				<img src="../assets/whosthatlogo.png" alt="Who's that Pokemon Logo" />
+				<img src="/whosthatlogo.png" alt="Who's that Pokemon Logo" />
 				<PokemonImage :pokemonId="pokemon.id" :showPokemon="showPokemon" />
 			</div>
 			<div class="functionality">

@@ -1,7 +1,7 @@
 <template>
 	<div class="options__container">
 		<h2>Escoge tu</h2>
-		<img src="../assets/pokemonLogo.png" alt="" />
+		<img src="/pokemonLogo.png" alt="" />
 		<ul class="options">
 			<li v-for="pokemon in pokemons" :key="pokemon.id">
 				<a @click="$emit('selection', pokemon.id)">
