@@ -128,6 +128,7 @@
 		padding: 10px;
 	}
 	.header__container {
+		height: calc((var(--vh) * 100) / 2);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
