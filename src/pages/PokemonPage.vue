@@ -1,27 +1,33 @@
 <template>
-	<h1 v-if="!pokemon">Analizando Pokemones</h1>
-
+	<div class="using__desktop" v-if="isDesktop">
+		<img src="../assets/gifs/bad.gif" alt="" />
+		<h2>Sorry, you're using a Desktop, this app only works on mobile</h2>
+	</div>
 	<template v-else>
-		<div class="header__container">
-			<!-- <h2>Hello Da</h2> -->
-			<img src="../assets/whosthatlogo.png" alt="Who's that Pokemon Logo" />
-			<PokemonImage :pokemonId="pokemon.id" :showPokemon="showPokemon" />
-		</div>
-		<div class="functionality">
-			<PokemonOptions
-				v-if="!showAnswer"
-				:pokemons="pokemonArr"
-				@selection="checkAnswer($event)"
-			/>
-			<PokemonAnswer
-				v-else
-				:message="message"
-				:btnText="btnText"
-				:pkmName="pkmName"
-				:answerImg="answerImg"
-				@newGame="newGame()"
-			/>
-		</div>
+		<h1 v-if="!pokemon">Analizando Pokemones</h1>
+
+		<template v-else>
+			<div class="header__container">
+				<!-- <h2>Hello Da</h2> -->
+				<img src="../assets/whosthatlogo.png" alt="Who's that Pokemon Logo" />
+				<PokemonImage :pokemonId="pokemon.id" :showPokemon="showPokemon" />
+			</div>
+			<div class="functionality">
+				<PokemonOptions
+					v-if="!showAnswer"
+					:pokemons="pokemonArr"
+					@selection="checkAnswer($event)"
+				/>
+				<PokemonAnswer
+					v-else
+					:message="message"
+					:btnText="btnText"
+					:pkmName="pkmName"
+					:answerImg="answerImg"
+					@newGame="newGame()"
+				/>
+			</div>
+		</template>
 	</template>
 </template>
 
@@ -45,6 +51,7 @@
 				btnText: "",
 				answerImg: "",
 				pkmName: "",
+				isDesktop: false,
 			};
 		},
 		methods: {
@@ -74,6 +81,19 @@
 				this.pokemonArr = [];
 				this.mixPokemonArray();
 			},
+			checkDesktop() {
+				let details = navigator.userAgent;
+				let regexp = /android|iphone|kindle|ipad/i;
+				let isMobileDevice = regexp.test(details);
+
+				if (!isMobileDevice) {
+					console.log("You are using a Desktop");
+					this.isDesktop = true;
+				}
+			},
+		},
+		created() {
+			this.checkDesktop();
 		},
 		mounted() {
 			this.mixPokemonArray();
@@ -85,6 +105,14 @@
 	h2,
 	h1 {
 		color: #ffcb05;
+	}
+	.using__desktop {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		padding: 10px;
 	}
 	.header__container {
 		display: flex;
