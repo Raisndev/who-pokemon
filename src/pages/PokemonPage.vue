@@ -1,6 +1,6 @@
 <template>
 	<div class="using__desktop" v-if="isDesktop">
-		<img src="../assets/gifs/bad.gif" alt="" />
+		<img src="/gifs/bad.gif" alt="" />
 		<h2>Sorry, you're using a Desktop, this app only works on mobile</h2>
 	</div>
 	<template v-else>
