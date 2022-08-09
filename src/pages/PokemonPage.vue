@@ -3,19 +3,24 @@
 
 	<template v-else>
 		<div class="header__container">
-			<h1>Que pokemon es?</h1>
+			<!-- <h2>Hello Da</h2> -->
+			<img src="../assets/whosthatlogo.png" alt="Who's that Pokemon Logo" />
 			<PokemonImage :pokemonId="pokemon.id" :showPokemon="showPokemon" />
 		</div>
-		<div>
+		<div class="functionality">
 			<PokemonOptions
 				v-if="!showAnswer"
 				:pokemons="pokemonArr"
 				@selection="checkAnswer($event)"
 			/>
-			<div class="answer" v-else>
-				<h2>{{ message }}</h2>
-				<button @click="newGame">New Game</button>
-			</div>
+			<PokemonAnswer
+				v-else
+				:message="message"
+				:btnText="btnText"
+				:pkmName="pkmName"
+				:answerImg="answerImg"
+				@newGame="newGame()"
+			/>
 		</div>
 	</template>
 </template>
@@ -23,12 +28,13 @@
 <script>
 	import PokemonImage from "../components/PokemonImage.vue";
 	import PokemonOptions from "../components/PokemonOptions.vue";
+	import PokemonAnswer from "../components/PokemonAnswer.vue";
 	import getPokemonOptions from "../helpers/getPokemonOptions";
 
 	console.log(getPokemonOptions());
 
 	export default {
-		components: { PokemonImage, PokemonOptions },
+		components: { PokemonImage, PokemonOptions, PokemonAnswer },
 		data() {
 			return {
 				pokemonArr: [],
@@ -36,6 +42,9 @@
 				showPokemon: false,
 				showAnswer: false,
 				message: "",
+				btnText: "",
+				answerImg: "",
+				pkmName: "",
 			};
 		},
 		methods: {
@@ -47,10 +56,15 @@
 			checkAnswer(pokemonId) {
 				this.showPokemon = true;
 				this.showAnswer = true;
+				this.pkmName = `${this.pokemon.name}`;
 				if (pokemonId === this.pokemon.id) {
-					this.message = `Correcto, ${this.pokemon.name}`;
+					this.message = `Correcto, és`;
+					this.btnText = "Siguiente";
+					this.answerImg = "/src/assets/gifs/good.gif";
 				} else {
-					this.message = `Oops, era ${this.pokemon.name}`;
+					this.message = `Oops, era`;
+					this.btnText = "New Game";
+					this.answerImg = "/src/assets/gifs/bad.gif";
 				}
 			},
 			newGame() {
@@ -68,25 +82,29 @@
 </script>
 
 <style>
-	.answer {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 80%;
-		border-radius: 20px;
+	h2,
+	h1 {
+		color: #ffcb05;
+	}
+	.header__container {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
-		padding: 20px;
-		background-color: rgb(156, 214, 156);
+		align-items: center;
+		gap: 20px;
+		margin: 25px;
 	}
-	.answer h2 {
-		margin: 0 0 10px 0;
+	.header__container img {
+		width: 50vw;
 	}
-	.answer button {
-		border: 0;
-		padding: 10px;
-		border-radius: 5px;
+	.functionality {
+		width: 100%;
+		height: 50vh;
+		padding: 20px 30px;
+		background-color: rgb(23 40 62);
+		border-radius: 10px 10px 0 0;
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		align-items: center;
 	}
 </style>

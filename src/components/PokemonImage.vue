@@ -7,6 +7,7 @@
 		data() {
 			return {
 				pkVisibility: false,
+				pkImgObtained: false,
 			};
 		},
 		props: {
@@ -22,11 +23,12 @@
 		},
 		computed: {
 			imgSrc() {
+				this.pkImgObtained = true;
 				return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.pokemonId}.svg`;
 			},
 		},
 		watch: {
-			showPokemon(value, oldValue) {
+			showPokemon(value) {
 				if (value == true) {
 					this.pkVisibility = true;
 					console.log("ji");
